@@ -1,13 +1,36 @@
 package model;
 
-import java.util.Date;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BorrowingSystem {
-	private Map<Book, User> borrowedBooks;  //map to associate books with current owner
-	private Map<Book, Date> dueDate;  //map to associate checked out books with the due date
-
+	private List<BorrowedBook> borrowedBooks;
+	
 	public BorrowingSystem() {
-		;
+		this.borrowedBooks=new ArrayList<>();
 	}
+	
+	public void borrowBook(Book book, User user) {//, Date currentDate) {
+		LocalDate dueDate = LocalDate.now().plusDays(7);
+		BorrowedBook borrowedBook = new BorrowedBook(book, user, dueDate);
+		borrowedBooks.add(borrowedBook);
+		//other methods for borrowing
+	}
+	
+	public void returnBook(Book book) {
+		borrowedBooks.removeIf(b->b.getBook().equals(book));  //??
+		//other methods for returning. maybe specific to each user?
+	}
+	
+	public LocalDate getDueDate(Book book) {
+		for(BorrowedBook borrowedBook : borrowedBooks) {
+			if(borrowedBook.getBook().equals(book)) {
+				return borrowedBook.getDueDate();
+			}
+		}
+		return null; //book not found or wasn't borrowed
+	}
+	
+	//other methods for managing borrowing and returning
 }

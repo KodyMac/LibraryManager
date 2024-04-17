@@ -1,13 +1,13 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class BorrowedBook {
 	private Book book;
 	private User user;
-	private Date dueDate;
+	private LocalDate dueDate;
 	
-	public BorrowedBook(Book book, User user, Date dueDate) {
+	public BorrowedBook(Book book, User user, LocalDate dueDate) {
 		this.book=book;
 		this.user=user;
 		this.dueDate=dueDate;
@@ -21,7 +21,7 @@ public class BorrowedBook {
 		return user;
 	}
 
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 }

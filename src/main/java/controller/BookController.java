@@ -19,6 +19,6 @@ public class BookController {
 	}
 	
 	public void displayBookInfo() {
-		view.displayBookInfo(model);
+		
 	}
 }

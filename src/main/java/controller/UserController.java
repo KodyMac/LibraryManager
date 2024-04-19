@@ -18,7 +18,7 @@ public class UserController {
 	}
 	
 	public void displayUserInfo() {
-		view.displayUserInfo(model);
+		
 	}
 	
 	

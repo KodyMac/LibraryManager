@@ -11,16 +11,19 @@ public class BorrowingSystem {
 		this.borrowedBooks=new ArrayList<>();
 	}
 	
-	public void borrowBook(Book book, User user) {//, Date currentDate) {
+	public void borrowBook(Book book, User user) {
 		LocalDate dueDate = LocalDate.now().plusDays(7);
+		
 		BorrowedBook borrowedBook = new BorrowedBook(book, user, dueDate);
 		borrowedBooks.add(borrowedBook);
+		
 		//other methods for borrowing
 	}
 	
 	public void returnBook(Book book) {
-		borrowedBooks.removeIf(b->b.getBook().equals(book));  //??
-		//other methods for returning. maybe specific to each user?
+		
+		
+		//methods for returning. maybe specific to each user?
 	}
 	
 	public LocalDate getDueDate(Book book) {

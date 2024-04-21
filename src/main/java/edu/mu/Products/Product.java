@@ -5,14 +5,14 @@ public abstract class Product {
 	protected String author;
 	protected ProductType type;
 	//protected genericGenreType genre;
-	protected String ID;
+	//protected String ID;
 	protected ProductGenre genre;
 	
-	public Product(String title, String author, ProductType type, String ID, ProductGenre genre) {
+	public Product(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
 		this.title=title;
 		this.author=author;
 		this.type=type;
-		this.ID=ID;
+		//this.ID=ID;
 		this.genre=genre;
 	}
 	
@@ -20,7 +20,7 @@ public abstract class Product {
 	public abstract String getTitle();
 	public abstract String getAuthor();
 	public abstract ProductType getType();
-	public abstract String getID();
+	//public abstract String getID();
 	public abstract ProductGenre getGenre();
 	
 }

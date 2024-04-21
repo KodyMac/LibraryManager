@@ -1,8 +1,8 @@
 package edu.mu.Products;
 
 public class Magazine extends Product {
-	public Magazine(String title, String author, ProductType type, String ID, ProductGenre genre) {
-		super(title, author, type, ID, genre);
+	public Magazine(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
+		super(title, author, type, /*ID,*/ genre);
 	}
 
 	@Override
@@ -20,10 +20,10 @@ public class Magazine extends Product {
 		return type;
 	}
 
-	@Override
+	/*@Override
 	public String getID() {
 		return ID;
-	}
+	} */
 
 	@Override
 	public ProductGenre getGenre() {

@@ -1,8 +1,8 @@
 package edu.mu.Products;
 
 public class CD extends Product{
-	public CD(String title, String author, ProductType type, String ID, ProductGenre genre) {
-		super(title,author,type,ID, genre);
+	public CD(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
+		super(title,author,type, /*ID,*/ genre);
 	}
 
 	@Override
@@ -20,10 +20,10 @@ public class CD extends Product{
 		return type;
 	}
 
-	@Override
+	/*@Override
 	public String getID() {
 		return ID;
-	}
+	} */
 
 	@Override
 	public ProductGenre getGenre() {

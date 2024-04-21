@@ -1,8 +1,8 @@
 package edu.mu.Products;
 
 public class DVD extends Product {
-	public DVD(String title, String author, ProductType type, String ID, ProductGenre genre) {
-		super(title, author, type, ID, genre);
+	public DVD(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
+		super(title, author, type, /*ID,*/ genre);
 	}
 	
 
@@ -21,10 +21,10 @@ public class DVD extends Product {
 		return type;
 	}
 
-	@Override
+	/*@Override
 	public String getID() {
 		return ID;
-	}
+	}*/
 
 	@Override
 	public ProductGenre getGenre() {

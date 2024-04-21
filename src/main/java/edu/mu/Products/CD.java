@@ -5,6 +5,10 @@ public class CD extends Product{
 		super(title,author,type, /*ID,*/ genre);
 	}
 
+	public boolean isAvailable() {
+		return available;
+	}
+	
 	@Override
 	public String getTitle() {
 		return title;

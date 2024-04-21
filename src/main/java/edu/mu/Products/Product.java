@@ -7,6 +7,7 @@ public abstract class Product {
 	//protected genericGenreType genre;
 	//protected String ID;
 	protected ProductGenre genre;
+	protected boolean available;
 	
 	public Product(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
 		this.title=title;

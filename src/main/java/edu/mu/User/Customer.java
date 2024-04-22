@@ -2,22 +2,24 @@ package edu.mu.User;
 
 public class Customer implements User{
 
+	private String name;
+	private String email;
+	private Permissions permission = Permissions.CUSTOMER;
+	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
 	public Permissions getPermissionType() {
-		// TODO Auto-generated method stub
-		return null;
+		//System.out.println("You are a " + permission + "You are able to check out and return products and see what you have currently checked out");
+		return permission;
 	}
 
 }

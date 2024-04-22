@@ -18,6 +18,7 @@ public class Librarian implements User{
 
 	@Override
 	public Permissions getPermissionType() {
+		//System.out.println("You are a " + permission + ". You are able to add/remove products, add/remove users, look at all\nchecked out products and everything customers can do");
 		return permission;
 	}
 

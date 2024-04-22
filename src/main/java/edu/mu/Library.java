@@ -21,11 +21,22 @@ public class Library {
 	
 	public void addProduct(User user, Product product) {
 		if(user.getPermissionType()!= Permissions.LIBRARIAN) {
-			System.out.println("You do not have access to do that.\n");
+			System.out.println("You do not have the access to do that.\n");
 			return;
 		}
 		products.add(product);
 		System.out.println("Product of " + product.getType() + " type. " + product.getTitle() + " by " + product.getAuthor() + " has been added to the catalog.\n");
 	}
+	
+	public void removeProduct(User user, Product product) {
+		if(user.getPermissionType()!= Permissions.LIBRARIAN) {
+			System.out.println("You do not have the access to do that. \n");
+			return;
+		}
+		products.remove(product);    //will this work?
+		System.out.println("Product of " + product.getType() + " type. " + product.getTitle() + " by " + product.getAuthor() + " has been removed from the catalog.\n");
+	}
+	
+	//borrow and return methods
 	
 }

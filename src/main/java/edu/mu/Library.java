@@ -12,7 +12,7 @@ import edu.mu.User.User;
 
 public class Library {
 	private List<Product> products;
-	private Map<User, Map<List<Product>,LocalDate>> checkedOut; //list of checked out books, along with the User who checked it out and the dueDate
+	private Map<User, List<Product>> /*Map<List<Product>,LocalDate>>*/ checkedOut; //list of checked out books, along with the User who checked it out and the dueDate
 
 	public Library() {
 		this.products = new ArrayList<>();
@@ -37,6 +37,18 @@ public class Library {
 		System.out.println("Product of " + product.getType() + " type. " + product.getTitle() + " by " + product.getAuthor() + " has been removed from the catalog.\n");
 	}
 	
-	//borrow and return methods
+	public void borrowProduct(User user, Product product) {
+		if(!product.isAvailable()) {
+			System.out.println("Sorry, this " + product.getType()  + " is not currently available");
+		}
+		List<Product> userCheckedOut = checkedOut.get(user); //?
+		userCheckedOut.add(product);
+		checkedOut.put(user, userCheckedOut);
+		product.setAvailable(false);
+	}
+	
+	public void returnProduct(User user, Product product) {
+		
+	}
 	
 }

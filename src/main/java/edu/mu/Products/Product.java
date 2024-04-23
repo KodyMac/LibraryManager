@@ -18,10 +18,45 @@ public abstract class Product {
 	}
 	
 	//public abstract String getType();
-	public abstract String getTitle();
-	public abstract String getAuthor();
-	public abstract ProductType getType();
-	//public abstract String getID();
-	public abstract ProductGenre getGenre();
+//	public abstract String getTitle();
+//	public abstract String getAuthor();
+//	public abstract ProductType getType();
+//	//public abstract String getID();
+//	public abstract ProductGenre getGenre();
+//	public abstract boolean isAvailable();
+//	//public abstract void setType();
+
+	public boolean isAvailable() {
+		return available;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public ProductType getType() {
+		return type;
+	}
+
+	public ProductGenre getGenre() {
+		return genre;
+	}
+	
+	public void setTitle(String title) {
+		this.title=title;
+	}
+	
+	public void setAuthor(String author) {
+		this.author=author;
+	}
+	
+	public void setAvailable(boolean avail) {
+		this.available=avail;
+	}
+	
 	
 }

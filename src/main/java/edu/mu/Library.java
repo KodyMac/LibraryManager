@@ -45,6 +45,7 @@ public class Library {
 		userCheckedOut.add(product);
 		checkedOut.put(user, userCheckedOut);
 		product.setAvailable(false);
+		System.out.println(product.getTitle() + " by " + product.getAuthor() + " has been checked out by " + user.getName());
 	}
 	
 	public void returnProduct(User user, Product product) {

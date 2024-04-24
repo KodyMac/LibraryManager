@@ -49,7 +49,16 @@ public class Library {
 	}
 	
 	public void returnProduct(User user, Product product) {
+		List<Product> userProduct=checkedOut.get(user);
+		if(userProduct==null || !userProduct.contains(product)) {
+			System.out.println("The product was not checked out by " + user.getName());
+			return;
+		}
 		
+		userProduct.remove(product);
+		checkedOut.put(user, userProduct);
+		product.setAvailable(true);
+		System.out.println("Product \"" + product.getTitle() + "\" has been returned by " + user.getName());
 	}
 	
 }

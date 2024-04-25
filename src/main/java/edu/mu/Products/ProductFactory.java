@@ -1,7 +1,7 @@
 package edu.mu.Products;
 
 public class ProductFactory {
-	public Product createProduct(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
+	public Product /*to be generic*/ createProduct(String title, String author, ProductType type, /*String ID,*/ ProductGenre genre) {
 		Product p = null;
 		switch(type) {
 		case BOOK:

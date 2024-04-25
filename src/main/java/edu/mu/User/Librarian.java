@@ -6,6 +6,12 @@ public class Librarian implements User{
 	private String email;
 	private Permissions permission = Permissions.LIBRARIAN;
 	
+	public Librarian(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+	
 	@Override
 	public String getName() {
 		return name;

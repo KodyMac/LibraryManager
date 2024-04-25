@@ -5,7 +5,14 @@ public class Customer implements User{
 	private String name;
 	private String email;
 	private Permissions permission = Permissions.CUSTOMER;
-	
+
+
+	public Customer(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+
 	@Override
 	public String getName() {
 		return name;

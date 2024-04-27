@@ -1,6 +1,5 @@
 package edu.mu;
 
-//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +47,7 @@ public class Library {
 	 * @param product
 	 */
 	public boolean removeProductFromLibrary(User user, String title, String author, ProductType type, ProductGenre genre) {
-		Product product = factory.createProduct(title, author, type, genre);
+		Product product = searchForAdmin(title,author,type,genre);
 		if(user.getPermissionType() != Permissions.LIBRARIAN) {
 			System.out.println("You do not have access to do that. \n");
 			return false;
@@ -59,12 +58,59 @@ public class Library {
 			return true;
 		} else return false;
 	}
-//	/**
-//	 * Will check to see if the product is currently available. If it is, it will "check out" the product under the user's account.
-//	 * @param user
-//	 * @param product
-//	 */
-//	public void borrowProduct(User user, Product product) {
+	
+	public Product searchFor(String title, String author) {
+		for (Product product : productCatalog) {
+	        if (product.getTitle().equals(title) && product.getAuthor().equals(author)) {
+	        	return product;
+	        }
+	    }
+	    System.out.println("Product not found in the catalog.");
+	    return null;
+	}
+
+	
+	public Product searchForAdmin(String title, String author, ProductType type, ProductGenre genre) {
+		for (Product product : productCatalog) {
+	        if (product.getTitle().equals(title) && product.getAuthor().equals(author) && product.getType().equals(type) && product.getGenre().equals(genre)) {
+	        	return product;
+	        }
+	    }
+	    System.out.println("Product not found in the catalog.");
+	    return null;
+	}
+	/**
+	 * Will check to see if the product is currently available. If it is, it will "check out" the product under the user's account.
+	 * @param user
+	 * @param product
+	 */
+public void checkOutProduct(User user, Product product) {
+	if(!checkedOut.containsKey(user)) {
+		checkedOut.put(user, new ArrayList<>());
+	}
+		checkedOut.get(user).add(product);
+		return;
+}
+
+public void returnProduct(User user, Product product) {
+	if(checkedOut.containsKey(user)) {
+		List<Product> userChecked = checkedOut.get(user);
+		if(userChecked.contains(product)) {
+			userChecked.remove(product);
+		}
+	}
+}
+
+public boolean isProductAvailable(Product product) {
+	return product.isAvailable();
+}
+	
+
+
+
+
+}
+	
 //		if(!product.isAvailable()) {
 //			System.out.println("Sorry, this " + product.getType()  + " is not currently available");
 //		}

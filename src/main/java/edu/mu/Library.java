@@ -10,13 +10,11 @@ import edu.mu.User.Permissions;
 import edu.mu.User.User;
 
 public class Library {
-	//private List<Product> products;
-	private Map<User, List<Product>> /*Map<List<Product>,LocalDate>>*/ checkedOut; //list of checked out books, along with the User who checked it out and the dueDate
-	private List<Product> productCatalog;
+	private Map<User, List<Product>> checkedOut; //list of checked out products, along with the user who checked it out
+	private List<Product> productCatalog; //list of all products
 	private ProductFactory factory;
 	
 	public Library() {
-		//this.products = new ArrayList<>();
 		this.checkedOut = new HashMap<>();
 		this.productCatalog = new ArrayList<Product>();
 		this.factory = new ProductFactory();
@@ -42,7 +40,7 @@ public class Library {
 	}
 	
 	/**
-	 * If the user is has LIBRARIAN permission access, it will remove the product from the library catalog.
+	 * If the user has LIBRARIAN permission access, it will remove the product from the library catalog.
 	 * @param user
 	 * @param product
 	 */
@@ -58,7 +56,12 @@ public class Library {
 			return true;
 		} else return false;
 	}
-	
+	/**
+	 * Generic search function.
+	 * @param title
+	 * @param author
+	 * @return Product
+	 */
 	public Product searchFor(String title, String author) {
 		for (Product product : productCatalog) {
 	        if (product.getTitle().equals(title) && product.getAuthor().equals(author)) {
@@ -69,7 +72,14 @@ public class Library {
 	    return null;
 	}
 
-	
+	/**
+	 * A search function for finding the exact product needed. Such as if multiple products titled the same.
+	 * @param title
+	 * @param author
+	 * @param type
+	 * @param genre
+	 * @return Product
+	 */
 	public Product searchForAdmin(String title, String author, ProductType type, ProductGenre genre) {
 		for (Product product : productCatalog) {
 	        if (product.getTitle().equals(title) && product.getAuthor().equals(author) && product.getType().equals(type) && product.getGenre().equals(genre)) {
@@ -92,6 +102,11 @@ public void checkOutProduct(User user, Product product) {
 		return;
 }
 
+/**
+ * Will check to see if a product is currently unavailable and is checked out by the user. If it is, it will return the product to the catalog and set availability to open.
+ * @param user
+ * @param product
+ */
 public void returnProduct(User user, Product product) {
 	if(checkedOut.containsKey(user)) {
 		List<Product> userChecked = checkedOut.get(user);
@@ -100,43 +115,12 @@ public void returnProduct(User user, Product product) {
 		}
 	}
 }
-
+/**
+ * Checks product availability.
+ * @param product
+ * @return
+ */
 public boolean isProductAvailable(Product product) {
 	return product.isAvailable();
+	}
 }
-	
-
-
-
-
-}
-	
-//		if(!product.isAvailable()) {
-//			System.out.println("Sorry, this " + product.getType()  + " is not currently available");
-//		}
-//		List<Product> userCheckedOut = checkedOut.get(user); //?
-//		userCheckedOut.add(product);
-//		checkedOut.put(user, userCheckedOut);
-//		product.setAvailable(false);
-//		System.out.println(product.getTitle() + " by " + product.getAuthor() + " has been checked out by " + user.getName());
-//	}
-//	/**
-//	 * Will check if the product has been taken out by the user, and if it has, it will return the product to the library. Setting it's
-//	 * availability back to true.
-//	 * @param user
-//	 * @param product
-//	 */
-//	public void returnProduct(User user, Product product) {
-//		List<Product> userProduct=checkedOut.get(user);
-//		if(userProduct==null || !userProduct.contains(product)) {
-//			System.out.println("The product was not checked out by " + user.getName());
-//			return;
-//		}
-//		
-//		userProduct.remove(product);
-//		checkedOut.put(user, userProduct);
-//		product.setAvailable(true);
-//		System.out.println("Product \"" + product.getTitle() + "\" has been returned by " + user.getName());
-//	}
-//	
-//}

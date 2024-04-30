@@ -123,4 +123,50 @@ public void returnProduct(User user, Product product) {
 public boolean isProductAvailable(Product product) {
 	return product.isAvailable();
 	}
+
+/**
+ * Prints entire catalog
+ */
+public void showCatalog() {
+	for(Product product : productCatalog) {
+		System.out.println(product.toString());
+	}
+}
+
+/**
+ * Print out products by given ProductType
+ * @param type
+ */
+public void typeSearch(ProductType type) {
+	for(Product product : productCatalog) {
+		if(product.getType()==type) {
+			System.out.println(product.toString());
+		}
+	}
+}
+
+/**
+ * Print out products by given genre
+ * @param genre
+ */
+public void genreSearch(ProductGenre genre) {
+	for(Product product : productCatalog) {
+		if(product.getGenre()==genre) {
+			System.out.println(product.toString());
+		}
+	}
+}
+
+/**
+ * Print out products by given author
+ * @param author
+ */
+public void authorSearch(String author) {
+	for(Product product : productCatalog) {
+		if(product.getAuthor()==author) {
+			System.out.println(product.toString());
+		}
+	}
+}
+
 }

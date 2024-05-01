@@ -1,23 +1,26 @@
 package edu.mu;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import edu.mu.BorrowSystem;
+//import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+//import java.util.Map;
 
 import edu.mu.Products.*;
 import edu.mu.User.Permissions;
 import edu.mu.User.User;
 
 public class Library {
-	private Map<User, List<Product>> checkedOut; //list of checked out products, along with the user who checked it out
+	//private Map<User, List<Product>> checkedOut; //list of checked out products, along with the user who checked it out
 	private List<Product> productCatalog; //list of all products
 	private ProductFactory factory;
+	private BorrowSystem borrower;
 	
 	public Library() {
-		this.checkedOut = new HashMap<>();
+		//this.checkedOut = new HashMap<>();
 		this.productCatalog = new ArrayList<Product>();
 		this.factory = new ProductFactory();
+		this.borrower = new BorrowSystem(this);
 	}
 	
 	/**
@@ -94,12 +97,8 @@ public class Library {
 	 * @param user
 	 * @param product
 	 */
-public void checkOutProduct(User user, Product product) {
-	if(!checkedOut.containsKey(user)) {
-		checkedOut.put(user, new ArrayList<>());
-	}
-		checkedOut.get(user).add(product);
-		return;
+public boolean checkOutProduct(User user, String title, String author) {  //carries along the parameters to the borrowing system
+		return borrower.borrowProduct(user, title, author);
 }
 
 /**
@@ -107,13 +106,8 @@ public void checkOutProduct(User user, Product product) {
  * @param user
  * @param product
  */
-public void returnProduct(User user, Product product) {
-	if(checkedOut.containsKey(user)) {
-		List<Product> userChecked = checkedOut.get(user);
-		if(userChecked.contains(product)) {
-			userChecked.remove(product);
-		}
-	}
+public boolean returnProduct(User user, String title, String author) {
+	return borrower.returnProduct(user, title, author);
 }
 /**
  * Checks product availability.

@@ -16,6 +16,9 @@ public class Main {
 		library.addProductToCatalog(lib, "Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.GRAPHIC_NOVEL);
 		library.addProductToCatalog(lib, "Shounen Jump", "Shuesha", ProductType.MAGAZINE, ProductGenre.POP_CULTURE);
 		library.addProductToCatalog(lib, "Persona 3 Reload", "Atlus", ProductType.GAME, ProductGenre.ADVENTURE);
+		
+		//library.checkOutProduct(cust, library.searchFor("Jojo's Bizarre Adventure", "Hirohiko Araki"));
+		
 //		/*Generic?*/Book Jojo = factory.createProduct("Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.ADVENTURE)); 
 //		//library.addProduct(cust, Jojo);//should fail
 //		library.addProduct(lib, factory.createProduct("Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.ADVENTURE)); //should allow to add

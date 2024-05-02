@@ -47,7 +47,7 @@ public class Library {
 	 * @param user
 	 * @param product
 	 */
-	public boolean removeProductFromLibrary(User user, String title, String author, ProductType type, ProductGenre genre) {
+	public boolean removeProductFromCatalog(User user, String title, String author, ProductType type, ProductGenre genre) {
 		Product product = searchForAdmin(title,author,type,genre);
 		if(user.getPermissionType() != Permissions.LIBRARIAN) {
 			System.out.println("You do not have access to do that. \n");

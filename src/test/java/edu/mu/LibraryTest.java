@@ -64,6 +64,12 @@ class LibraryTest {
 		assertEquals(true,library.addProductToCatalog(lib, g.getTitle(), g.getAuthor(), g.getType(), g.getGenre()));
 		assertEquals(true,library.addProductToCatalog(lib, d.getTitle(), d.getAuthor(), d.getType(), d.getGenre()));
 		assertEquals(true,library.addProductToCatalog(lib, m.getTitle(), m.getAuthor(), m.getType(), m.getGenre()));
+		assertEquals(true,library.checkOutProduct(lib, b.getTitle(), b.getAuthor()));
+		assertEquals(false,library.checkOutProduct(lib, g.getTitle(), m.getAuthor()));
+		assertEquals(false,library.checkOutProduct(lib, b.getTitle(), b.getAuthor()));
+		assertEquals(false,library.returnProduct(cust, b.getTitle(), b.getAuthor()));
+		assertEquals(true,library.returnProduct(lib, b.getTitle(), b.getAuthor()));
+
 	}
 	@Test
 	void testCustAddProductToCatalog() {
@@ -80,6 +86,7 @@ class LibraryTest {
 	void testLibRemoveProductFromCatalog() {
 		library.addProductToCatalog(lib, b.getTitle(), b.getAuthor(), b.getType(), b.getGenre());
 		assertEquals(true,library.removeProductFromCatalog(lib, b.getTitle(), b.getAuthor(), b.getType(), b.getGenre()));
+		assertEquals(false,library.removeProductFromCatalog(lib, g.getTitle(), b.getAuthor(), b.getType(), b.getGenre()));
 	}
 	
 	@Test

@@ -24,15 +24,21 @@ public class BorrowSystem {
 		
 		Product product = library.searchFor(title, author);   //search for requested product
 		if(product!=null) {  //product is found and is available
-			product.setAvailable(false);
-			checkedOut.get(user).add(product);
-			System.out.println("You have checked out " + product.toString());
-			return true;
-		}										//do these need to be elses?
-		if(!library.isProductAvailable(product)) {
-			System.out.println("Product is currently unavailable");
-			return false;
-		}
+			if(library.isProductAvailable(product) ) {
+				
+				product.setAvailable(false);
+				List<Product> temp=checkedOut.get(user);
+				temp.add(product);
+				//temp=checkedOut.get(user);
+				checkedOut.put(user, temp);
+				System.out.println("You have checked out " + product.toString());
+				return true;
+			}
+			if(!library.isProductAvailable(product) ) {
+				System.out.println("Product is currently unavailable");
+				return false;
+			}
+		}									//do these need to be elses?
 		System.out.println("Product not found");
 		return false;
 }
@@ -41,16 +47,21 @@ public class BorrowSystem {
 	
 	public boolean returnProduct(User user, String title, String author) {
 		Product product = library.searchFor(title, author);
-		if(product!=null) {
-			if(checkedOut.get(user).contains(product)) {
+		if(product != null) {
+			List<Product> temp=checkedOut.get(user);
+			if(temp==null) {
+				System.out.println("You have not borrowed this product.");
+				return false;
+			}
+			if(temp.contains(product)) {
 				checkedOut.get(user).remove(product);
 				product.setAvailable(true);
 				System.out.println("Successfully returned " + product.toString());
 				return true; 
-			} else {
-				System.out.println("You have not borrowed this product.");
-				return false;
-			}
+			} //else {
+//				System.out.println("You have not borrowed this product.");
+//				return false;
+//			}
 		}
 		System.out.println("Product not found");
 		return false;

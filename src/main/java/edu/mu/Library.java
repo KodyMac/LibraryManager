@@ -83,7 +83,7 @@ public class Library {
 	 * @param genre
 	 * @return Product
 	 */
-	public Product searchForAdmin(String title, String author, ProductType type, ProductGenre genre) {
+	private Product searchForAdmin(String title, String author, ProductType type, ProductGenre genre) {
 		for (Product product : productCatalog) {
 	        if (product.getTitle().equals(title) && product.getAuthor().equals(author) && product.getType().equals(type) && product.getGenre().equals(genre)) {
 	        	return product;

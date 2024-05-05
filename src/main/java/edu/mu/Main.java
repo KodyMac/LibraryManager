@@ -12,16 +12,18 @@ public class Main {
 		
 		library.addProductToCatalog(cust, "The Golden Experience", "Prince", ProductType.CD, ProductGenre.POP); //should fail due to customer permission
 		library.addProductToCatalog(lib, "The Golden Experience", "Prince", ProductType.CD, ProductGenre.POP); //should work
-		library.addProductToCatalog(lib, "Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.GRAPHIC_NOVEL);
-		library.addProductToCatalog(lib, "Shounen Jump", "Shuesha", ProductType.MAGAZINE, ProductGenre.POP_CULTURE);
-		library.addProductToCatalog(lib, "Persona 3 Reload", "Atlus", ProductType.GAME, ProductGenre.ADVENTURE);
-		library.checkOutProduct(cust, "Jojo's Bizarre Adventure", "Hirohiko Araki");
-		library.checkOutProduct(lib, "Jojo's Bizarre Adventure", "Hirohiko Araki");
-		library.authorSearch("Prince");
-		library.showCatalog();
-		library.returnProduct(cust, "Jojo's Bizarre Adventure", "Hirohiko Araki");
-		//library.checkOutProduct(cust, library.searchFor("Jojo's Bizarre Adventure", "Hirohiko Araki"));
-		
+		library.addProductToCatalog(lib, "Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.GRAPHIC_NOVEL); //add to catalog
+		library.addProductToCatalog(lib, "Shounen Jump", "Shuesha", ProductType.MAGAZINE, ProductGenre.POP_CULTURE); //add to catalog
+		library.addProductToCatalog(lib, "Persona 3 Reload", "Atlus", ProductType.GAME, ProductGenre.ADVENTURE); //add to catalog
+		library.addProductToCatalog(lib, "Dude, Where's My Car?!", "Danny Leiner", ProductType.DVD, ProductGenre.SCI_FI); //add to catalog
+		library.checkOutProduct(cust, "Jojo's Bizarre Adventure", "Hirohiko Araki"); //customer check out
+		library.checkOutProduct(lib, "Jojo's Bizarre Adventure", "Hirohiko Araki"); //fails, as it is already checked out
+		library.authorSearch("Prince"); //search for products with author "Prince"
+		library.searchFor("Fake", "Not Real");  //search for something not in catalog
+		library.removeProductFromCatalog(lib,"Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.GRAPHIC_NOVEL); //fail to remove product already checked out
+		library.showCatalog(); //print all of catalog
+		library.returnProduct(cust, "Jojo's Bizarre Adventure", "Hirohiko Araki"); //return product
+		library.removeProductFromCatalog(lib, "Jojo's Bizarre Adventure", "Hirohiko Araki", ProductType.BOOK, ProductGenre.GRAPHIC_NOVEL); //remove product
 	}
 
 }

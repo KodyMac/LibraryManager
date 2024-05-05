@@ -25,20 +25,18 @@ public class BorrowSystem {
 		Product product = library.searchFor(title, author);   //search for requested product
 		if(product!=null) {  //product is found and is available
 			if(library.isProductAvailable(product) ) {
-				
 				product.setAvailable(false);
 				List<Product> temp=checkedOut.get(user);
 				temp.add(product);
-				//temp=checkedOut.get(user);
 				checkedOut.put(user, temp);
-				System.out.println(user.getName() + " has checked out " + product.getTitle() + " by " + product.getAuthor());
+				System.out.println(user.getName() + " has checked out " + product.getTitle() + " by " + product.getAuthor() + "\n");
 				return true;
 			}
-			if(!library.isProductAvailable(product) ) {
-				System.out.println("Product is currently unavailable");
+			if(!library.isProductAvailable(product) ) { //product is not available
+				System.out.println("Product is currently unavailable\n");
 				return false;
 			}
-		}									//do these need to be elses?
+		}									
 		System.out.println("Product not found");
 		return false;
 }
@@ -49,21 +47,18 @@ public class BorrowSystem {
 		Product product = library.searchFor(title, author);
 		if(product != null) {
 			List<Product> temp=checkedOut.get(user);
-			if(temp==null) {
-				System.out.println("You have not borrowed this product.");
+			if(!temp.contains(product)) { //user has not checked out this product
+				System.out.println("You have not borrowed this product.\n");
 				return false;
 			}
-			if(temp.contains(product)) {
+			if(temp.contains(product)) { //if the user has checked it out
 				checkedOut.get(user).remove(product);
 				product.setAvailable(true);
-				System.out.println(user.getName() + " has successfully returned " + product.getTitle() + " by " + product.getAuthor());
+				System.out.println(user.getName() + " has successfully returned " + product.getTitle() + " by " + product.getAuthor()+ "\n");
 				return true; 
-			} //else {
-//				System.out.println("You have not borrowed this product.");
-//				return false;
-//			}
+			}
 		}
-		System.out.println("Product not found");
+		System.out.println("Product not found.\n");
 		return false;
 	}
 }

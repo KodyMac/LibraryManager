@@ -11,13 +11,11 @@ import edu.mu.User.Permissions;
 import edu.mu.User.User;
 
 public class Library {
-	//private Map<User, List<Product>> checkedOut; //list of checked out products, along with the user who checked it out
 	private List<Product> productCatalog; //list of all products
 	private ProductFactory factory;
 	private BorrowSystem borrower;
 	
 	public Library() {
-		//this.checkedOut = new HashMap<>();
 		this.productCatalog = new ArrayList<Product>();
 		this.factory = new ProductFactory();
 		this.borrower = new BorrowSystem(this);
@@ -53,11 +51,17 @@ public class Library {
 			System.out.println("You do not have access to do that. \n");
 			return false;
 		}
-		if(productCatalog.contains(product)) {
+		if(productCatalog.contains(product) && product.isAvailable()==true) {
 			productCatalog.remove(product);
 			System.out.println("Product of " + product.getType() + " type. " + product.getTitle() + " by " + product.getAuthor() + " has been removed from the catalog.\n");
 			return true;
-		} else return false;
+		} else {
+			if(product.isAvailable()== false) {
+				System.out.println("The product is currently checked out.\n");
+				return false;
+			}
+			return false;
+		}
 	}
 	/**
 	 * Generic search function.
@@ -71,12 +75,12 @@ public class Library {
 	        	return product;
 	        }
 	    }
-	    System.out.println("Product not found in the catalog.");
+	    System.out.println("Product not found in the catalog.\n");
 	    return null;
 	}
 
 	/**
-	 * A search function for finding the exact product needed. Such as if multiple products titled the same.
+	 * A search function for finding the exact product needed. Such as if multiple products titled the same. Used primarily for removing products.
 	 * @param title
 	 * @param author
 	 * @param type
@@ -112,7 +116,7 @@ public boolean returnProduct(User user, String title, String author) {
 /**
  * Checks product availability.
  * @param product
- * @return
+ * @return boolean
  */
 public boolean isProductAvailable(Product product) {
 	return product.isAvailable();
@@ -125,6 +129,7 @@ public void showCatalog() {
 	for(Product product : productCatalog) {
 		System.out.println(product.getTitle() + " by " + product.getAuthor() + ", A " + product.getType() + ". Genre: " + product.getGenre() + " \tAvailable: " + product.isAvailable());
 	}
+	System.out.println("\n");
 }
 
 /**

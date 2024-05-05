@@ -11,7 +11,6 @@ public abstract class Product {
 		this.title=title;
 		this.author=author;
 		this.type=type;
-		//this.ID=ID;
 		this.genre=genre;
 	}
 	

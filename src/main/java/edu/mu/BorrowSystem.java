@@ -31,7 +31,7 @@ public class BorrowSystem {
 				temp.add(product);
 				//temp=checkedOut.get(user);
 				checkedOut.put(user, temp);
-				System.out.println("You have checked out " + product.toString());
+				System.out.println(user.getName() + " has checked out " + product.getTitle() + " by " + product.getAuthor());
 				return true;
 			}
 			if(!library.isProductAvailable(product) ) {
@@ -56,7 +56,7 @@ public class BorrowSystem {
 			if(temp.contains(product)) {
 				checkedOut.get(user).remove(product);
 				product.setAvailable(true);
-				System.out.println("Successfully returned " + product.toString());
+				System.out.println(user.getName() + " has successfully returned " + product.getTitle() + " by " + product.getAuthor());
 				return true; 
 			} //else {
 //				System.out.println("You have not borrowed this product.");

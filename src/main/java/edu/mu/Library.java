@@ -123,7 +123,7 @@ public boolean isProductAvailable(Product product) {
  */
 public void showCatalog() {
 	for(Product product : productCatalog) {
-		System.out.println(product.toString());
+		System.out.println(product.getTitle() + " by " + product.getAuthor() + ", A " + product.getType() + ". Genre: " + product.getGenre() + " \tAvailable: " + product.isAvailable());
 	}
 }
 
@@ -134,9 +134,10 @@ public void showCatalog() {
 public void typeSearch(ProductType type) {
 	for(Product product : productCatalog) {
 		if(product.getType()==type) {
-			System.out.println(product.toString());
+			System.out.println(product.getTitle() + " by " + product.getAuthor() + ", A " + product.getType() + ". Genre: " + product.getGenre());
 		}
 	}
+	System.out.println("\n");
 }
 
 /**
@@ -146,9 +147,10 @@ public void typeSearch(ProductType type) {
 public void genreSearch(ProductGenre genre) {
 	for(Product product : productCatalog) {
 		if(product.getGenre()==genre) {
-			System.out.println(product.toString());
+			System.out.println(product.getTitle() + " by " + product.getAuthor() + ", A " + product.getType() + ". Genre: " + product.getGenre());
 		}
 	}
+	System.out.println("\n");
 }
 
 /**
@@ -158,9 +160,10 @@ public void genreSearch(ProductGenre genre) {
 public void authorSearch(String author) {
 	for(Product product : productCatalog) {
 		if(product.getAuthor()==author) {
-			System.out.println(product.toString());
+			System.out.println(product.getTitle() + " by " + product.getAuthor() + ", A " + product.getType() + ". Genre: " + product.getGenre());
 		}
 	}
+	System.out.println("\n");
 }
 
 }
